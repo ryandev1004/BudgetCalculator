@@ -32,6 +32,14 @@ public class PondMemberService {
         return pondMemberMapper.toDtoFromPondMember(pondMember);
     }
 
+    public List<PondMemberDTO> getPondMemberBySRank() {
+        List<PondMember> allMembers = pondMemberRepository.findAll();
+        return allMembers.stream()
+                .filter(pondMember -> pondMember.getRank() == 'S')
+                .map(pondMemberMapper::toDtoFromPondMember)
+                .toList();
+    }
+
     public PondMemberDTO createPondMember(PondMemberCreateDTO pondMemberCreateDTO) {
         PondMember pondMember = pondMemberMapper.toPondMemberFromCreateDto(pondMemberCreateDTO);
         PondMember savedPondMember = pondMemberRepository.save(pondMember);
