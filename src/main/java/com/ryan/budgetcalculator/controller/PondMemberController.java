@@ -27,6 +27,11 @@ public class PondMemberController {
         return ResponseEntity.ok().body(pondMemberService.getPondMemberById(id));
     }
 
+    @GetMapping("members/s-rank")
+    public ResponseEntity<List<PondMemberDTO>> getAllPondMemberSRanks() {
+        return ResponseEntity.ok().body(pondMemberService.getPondMemberBySRank());
+    }
+
     @PostMapping("members")
     public ResponseEntity<PondMemberDTO> addPondMember(@RequestBody PondMemberCreateDTO pondMemberCreateDTO) {
         return ResponseEntity.ok().body(pondMemberService.createPondMember(pondMemberCreateDTO));
