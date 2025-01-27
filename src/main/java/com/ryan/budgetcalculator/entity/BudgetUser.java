@@ -19,11 +19,11 @@ public class BudgetUser {
     private String name;
     private int age;
     private String occupation;
-    private float yearlyIncome;
-    private float monthlyRent;
-    private float monthlyFoodCost;
-    private float monthlyStreamingAndWifi;
-    private float monthlyInsurance;
-    private float monthlyOtherExpenses;
+    private double yearlyIncome;
+    private double monthlyRent;
+    private double monthlyFoodCost;
+    private double monthlyStreamingAndWifi;
+    private double monthlyInsurance;
+    private double monthlyOtherExpenses;
 
 }
