@@ -1,9 +1,9 @@
-package com.ryan.budgetcalculator.controller;
+package com.ryan.budgetcalculator.examples.controller;
 
-import com.ryan.budgetcalculator.entity.dto.PondMemberCreateDTO;
-import com.ryan.budgetcalculator.entity.dto.PondMemberDTO;
-import com.ryan.budgetcalculator.entity.dto.PondMemberUpdateDTO;
-import com.ryan.budgetcalculator.service.PondMemberService;
+import com.ryan.budgetcalculator.examples.entity.dto.PondMemberCreateDTO;
+import com.ryan.budgetcalculator.examples.entity.dto.PondMemberDTO;
+import com.ryan.budgetcalculator.examples.entity.dto.PondMemberUpdateDTO;
+import com.ryan.budgetcalculator.examples.service.PondMemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

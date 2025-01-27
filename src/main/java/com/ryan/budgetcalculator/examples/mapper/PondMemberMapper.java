@@ -1,8 +1,8 @@
-package com.ryan.budgetcalculator.mapper;
+package com.ryan.budgetcalculator.examples.mapper;
 
-import com.ryan.budgetcalculator.entity.PondMember;
-import com.ryan.budgetcalculator.entity.dto.PondMemberCreateDTO;
-import com.ryan.budgetcalculator.entity.dto.PondMemberDTO;
+import com.ryan.budgetcalculator.examples.entity.PondMember;
+import com.ryan.budgetcalculator.examples.entity.dto.PondMemberCreateDTO;
+import com.ryan.budgetcalculator.examples.entity.dto.PondMemberDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

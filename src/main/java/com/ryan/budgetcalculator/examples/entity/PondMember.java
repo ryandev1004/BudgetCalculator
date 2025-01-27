@@ -1,4 +1,4 @@
-package com.ryan.budgetcalculator.entity;
+package com.ryan.budgetcalculator.examples.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

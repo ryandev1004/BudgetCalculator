@@ -1,6 +1,6 @@
-package com.ryan.budgetcalculator.repository;
+package com.ryan.budgetcalculator.examples.repository;
 
-import com.ryan.budgetcalculator.entity.PondMember;
+import com.ryan.budgetcalculator.examples.entity.PondMember;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

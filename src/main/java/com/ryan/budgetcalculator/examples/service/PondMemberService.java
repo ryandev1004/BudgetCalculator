@@ -1,11 +1,11 @@
-package com.ryan.budgetcalculator.service;
+package com.ryan.budgetcalculator.examples.service;
 
-import com.ryan.budgetcalculator.entity.PondMember;
-import com.ryan.budgetcalculator.entity.dto.PondMemberCreateDTO;
-import com.ryan.budgetcalculator.entity.dto.PondMemberDTO;
-import com.ryan.budgetcalculator.entity.dto.PondMemberUpdateDTO;
-import com.ryan.budgetcalculator.mapper.PondMemberMapper;
-import com.ryan.budgetcalculator.repository.PondMemberRepository;
+import com.ryan.budgetcalculator.examples.entity.PondMember;
+import com.ryan.budgetcalculator.examples.entity.dto.PondMemberCreateDTO;
+import com.ryan.budgetcalculator.examples.entity.dto.PondMemberDTO;
+import com.ryan.budgetcalculator.examples.entity.dto.PondMemberUpdateDTO;
+import com.ryan.budgetcalculator.examples.mapper.PondMemberMapper;
+import com.ryan.budgetcalculator.examples.repository.PondMemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

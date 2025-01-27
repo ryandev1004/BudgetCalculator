@@ -1,4 +1,4 @@
-package com.ryan.budgetcalculator.entity.dto;
+package com.ryan.budgetcalculator.examples.entity.dto;
 
 import lombok.Data;
 
