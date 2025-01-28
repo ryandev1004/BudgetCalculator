@@ -2,8 +2,6 @@ package com.ryan.budgetcalculator.controller;
 
 import com.ryan.budgetcalculator.entity.dto.BudgetUserCreateDTO;
 import com.ryan.budgetcalculator.entity.dto.BudgetUserDTO;
-import com.ryan.budgetcalculator.examples.repository.PondMemberRepository;
-import com.ryan.budgetcalculator.repository.BudgetUserRepository;
 import com.ryan.budgetcalculator.service.BudgetUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -24,10 +22,10 @@ public class BudgetUserController {
         return ResponseEntity.ok().body(budgetUserService.getAllBudgetUsers());
     }
 
-    @GetMapping("users/{id}")
-    public ResponseEntity<BudgetUserDTO> getBudgetUserById(@PathVariable UUID id) {
-        return null;
-    }
+//    @GetMapping("users/{id}")
+//    public ResponseEntity<BudgetUserDTO> getBudgetUserById(@PathVariable UUID id) {
+//        return null;
+//    }
 
     @PostMapping("users")
     public ResponseEntity<BudgetUserDTO> addBudgetUser(@RequestBody BudgetUserCreateDTO budgetUserCreateDTO) {
