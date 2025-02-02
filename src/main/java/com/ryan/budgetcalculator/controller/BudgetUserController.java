@@ -35,7 +35,7 @@ public class BudgetUserController {
 
     @PatchMapping("users/{id}")
     public ResponseEntity<BudgetUserDTO> updateBudgetUser(@RequestBody BudgetUserPatchDTO budgetUserPatchDTO, @PathVariable UUID id) {
-        return null;
+        return ResponseEntity.ok().body(budgetUserService.updateBudgetUser(budgetUserPatchDTO, id));
     }
 
     @DeleteMapping("users/{id}")
