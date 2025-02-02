@@ -6,7 +6,7 @@ import lombok.Data;
 public class BudgetUserCreateDTO {
 
     private String name;
-    private int age;
+    private Integer age;
     private String occupation;
     private double yearlyIncome;
     private double monthlyRent;
