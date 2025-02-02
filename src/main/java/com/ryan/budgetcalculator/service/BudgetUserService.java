@@ -33,13 +33,14 @@ public class BudgetUserService {
 
     public BudgetUserDTO createBudgetUser(BudgetUserCreateDTO budgetUserCreateDTO) {
         BudgetUser budgetUser = budgetUserMapper.fromCreateDTO(budgetUserCreateDTO);
-        BudgetUser savedBudgetUser = budgetUserRepository.save(budgetUser);
-        return budgetUserMapper.toDTO(savedBudgetUser);
+        return budgetUserMapper.toDTO(budgetUserRepository.save(budgetUser));
     }
 
     public BudgetUserDTO updateBudgetUser(BudgetUserPatchDTO budgetUserPatchDTO, UUID id) {
         BudgetUser budgetUser = budgetUserRepository.findById(id).orElse(null);
-        return null;
+        assert budgetUser != null;
+        budgetUserMapper.partialUpdate(budgetUser, budgetUserPatchDTO);
+        return budgetUserMapper.toDTO(budgetUserRepository.save(budgetUser));
     }
 
 
