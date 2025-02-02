@@ -24,7 +24,7 @@ public class BudgetUserController {
 
 //    @GetMapping("users/{id}")
 //    public ResponseEntity<BudgetUserDTO> getBudgetUserById(@PathVariable UUID id) {
-//        return null;
+//        return ResponseEntity.ok().body(budgetUserService.getBudgetUserById(id));
 //    }
 
     @PostMapping("users")

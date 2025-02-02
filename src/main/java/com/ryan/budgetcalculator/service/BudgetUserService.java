@@ -21,14 +21,21 @@ public class BudgetUserService {
 
     public List<BudgetUserDTO> getAllBudgetUsers() {
         List<BudgetUser> allUsers = budgetUserRepository.findAll();
-        return allUsers.stream().map(budgetUserMapper::toDTO).collect(Collectors.toList());
+        return allUsers.stream()
+                .map(budgetUserMapper::toDTO)
+                .collect(Collectors.toList());
     }
+
+//    public BudgetUserDTO getBudgetUserById(UUID id) {
+//        return budgetUserMapper.toDTO(budgetUserRepository.findById(id).orElse(null));
+//    }
 
     public BudgetUserDTO createBudgetUser(BudgetUserCreateDTO budgetUserCreateDTO) {
         BudgetUser budgetUser = budgetUserMapper.fromCreateDTO(budgetUserCreateDTO);
         BudgetUser savedBudgetUser = budgetUserRepository.save(budgetUser);
         return budgetUserMapper.toDTO(savedBudgetUser);
     }
+
 
     public void deleteBudgetUser(UUID budgetUserId) { budgetUserRepository.deleteById(budgetUserId); }
 }
