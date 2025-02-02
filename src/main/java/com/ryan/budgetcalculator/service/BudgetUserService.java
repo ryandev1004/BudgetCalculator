@@ -3,6 +3,7 @@ package com.ryan.budgetcalculator.service;
 import com.ryan.budgetcalculator.entity.BudgetUser;
 import com.ryan.budgetcalculator.entity.dto.BudgetUserCreateDTO;
 import com.ryan.budgetcalculator.entity.dto.BudgetUserDTO;
+import com.ryan.budgetcalculator.entity.dto.BudgetUserPatchDTO;
 import com.ryan.budgetcalculator.mapper.BudgetUserMapper;
 import com.ryan.budgetcalculator.repository.BudgetUserRepository;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +35,11 @@ public class BudgetUserService {
         BudgetUser budgetUser = budgetUserMapper.fromCreateDTO(budgetUserCreateDTO);
         BudgetUser savedBudgetUser = budgetUserRepository.save(budgetUser);
         return budgetUserMapper.toDTO(savedBudgetUser);
+    }
+
+    public BudgetUserDTO updateBudgetUser(BudgetUserPatchDTO budgetUserPatchDTO, UUID id) {
+        BudgetUser budgetUser = budgetUserRepository.findById(id).orElse(null);
+        return null;
     }
 
 
