@@ -3,8 +3,8 @@ package com.ryan.budgetcalculator.mapper;
 import com.ryan.budgetcalculator.entity.BudgetUser;
 import com.ryan.budgetcalculator.entity.dto.BudgetUserCreateDTO;
 import com.ryan.budgetcalculator.entity.dto.BudgetUserDTO;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+import com.ryan.budgetcalculator.entity.dto.BudgetUserPatchDTO;
+import org.mapstruct.*;
 
 @Mapper(componentModel = "spring")
 public interface BudgetUserMapper {
@@ -13,4 +13,7 @@ public interface BudgetUserMapper {
 
     @Mapping(target = "id", ignore = true)
     BudgetUser fromCreateDTO(BudgetUserCreateDTO budgetUserCreateDTO);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void partialUpdate(@MappingTarget BudgetUser budgetUser, BudgetUserPatchDTO budgetUserPatchDTO);
 }
