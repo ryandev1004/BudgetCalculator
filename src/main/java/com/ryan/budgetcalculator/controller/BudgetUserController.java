@@ -22,10 +22,10 @@ public class BudgetUserController {
         return ResponseEntity.ok().body(budgetUserService.getAllBudgetUsers());
     }
 
-//    @GetMapping("users/{id}")
-//    public ResponseEntity<BudgetUserDTO> getBudgetUserById(@PathVariable UUID id) {
-//        return ResponseEntity.ok().body(budgetUserService.getBudgetUserById(id));
-//    }
+    @GetMapping("users/{id}")
+    public ResponseEntity<BudgetUserDTO> getBudgetUserById(@PathVariable UUID id) {
+        return ResponseEntity.ok().body(budgetUserService.getBudgetUserById(id));
+    }
 
     @PostMapping("users")
     public ResponseEntity<BudgetUserDTO> addBudgetUser(@RequestBody BudgetUserCreateDTO budgetUserCreateDTO) {
