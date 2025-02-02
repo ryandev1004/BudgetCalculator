@@ -6,12 +6,12 @@ import lombok.Data;
 public class BudgetUserPatchDTO {
 
     private String name;
-    private int age;
+    private Integer age;
     private String occupation;
-    private double yearlyIncome;
-    private double monthlyRent;
-    private double monthlyFoodCost;
-    private double monthlyStreamingAndWifi;
-    private double monthlyInsurance;
-    private double monthlyOtherExpenses;
+    private Double yearlyIncome;
+    private Double monthlyRent;
+    private Double monthlyFoodCost;
+    private Double monthlyStreamingAndWifi;
+    private Double monthlyInsurance;
+    private Double monthlyOtherExpenses;
 }
