@@ -26,9 +26,9 @@ public class BudgetUserService {
                 .collect(Collectors.toList());
     }
 
-//    public BudgetUserDTO getBudgetUserById(UUID id) {
-//        return budgetUserMapper.toDTO(budgetUserRepository.findById(id).orElse(null));
-//    }
+    public BudgetUserDTO getBudgetUserById(UUID id) {
+        return budgetUserMapper.toDTO(budgetUserRepository.findById(id).orElse(null));
+    }
 
     public BudgetUserDTO createBudgetUser(BudgetUserCreateDTO budgetUserCreateDTO) {
         BudgetUser budgetUser = budgetUserMapper.fromCreateDTO(budgetUserCreateDTO);

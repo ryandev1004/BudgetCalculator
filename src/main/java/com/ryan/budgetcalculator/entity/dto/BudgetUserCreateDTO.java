@@ -7,5 +7,12 @@ public class BudgetUserCreateDTO {
 
     private String name;
     private int age;
+    private String occupation;
+    private double yearlyIncome;
+    private double monthlyRent;
+    private double monthlyFoodCost;
+    private double monthlyStreamingAndWifi;
+    private double monthlyInsurance;
+    private double monthlyOtherExpenses;
 
 }
