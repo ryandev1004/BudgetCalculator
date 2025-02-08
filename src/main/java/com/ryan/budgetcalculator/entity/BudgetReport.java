@@ -2,7 +2,6 @@ package com.ryan.budgetcalculator.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.time.LocalDate;
@@ -10,7 +9,6 @@ import java.util.UUID;
 
 @Entity
 @Data
-@RequiredArgsConstructor
 public class BudgetReport {
 
     @Id
