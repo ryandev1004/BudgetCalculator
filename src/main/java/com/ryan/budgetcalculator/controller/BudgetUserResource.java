@@ -17,7 +17,6 @@ public class BudgetUserResource {
 
     private final BudgetUserService budgetUserService;
 
-
     @GetMapping("users")
     public ResponseEntity<List<BudgetUserDTO>> getBudgetAllUsers() {
         return ResponseEntity.ok().body(budgetUserService.getAllBudgetUsers());
@@ -43,6 +42,5 @@ public class BudgetUserResource {
         budgetUserService.deleteBudgetUser(id);
         return ResponseEntity.ok().body(id);
     }
-
 
 }
