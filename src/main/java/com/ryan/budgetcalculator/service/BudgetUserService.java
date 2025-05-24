@@ -6,6 +6,7 @@ import com.ryan.budgetcalculator.entity.dto.BudgetUserDTO;
 import com.ryan.budgetcalculator.entity.dto.BudgetUserPatchDTO;
 import com.ryan.budgetcalculator.mapper.BudgetUserMapper;
 import com.ryan.budgetcalculator.repository.BudgetUserRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class BudgetUserService {
 
