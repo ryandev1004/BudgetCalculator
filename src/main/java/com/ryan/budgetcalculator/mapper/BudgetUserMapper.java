@@ -6,7 +6,9 @@ import com.ryan.budgetcalculator.entity.dto.BudgetUserDTO;
 import com.ryan.budgetcalculator.entity.dto.BudgetUserPatchDTO;
 import org.mapstruct.*;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {
+    BudgetReportMapper.class,
+})
 public interface BudgetUserMapper {
 
     BudgetUserDTO toDTO(BudgetUser budgetUser);

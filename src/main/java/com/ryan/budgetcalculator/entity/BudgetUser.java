@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -34,7 +35,7 @@ public class BudgetUser {
 
     private double monthlyOtherExpenses;
 
-    @OneToMany(mappedBy = "budgetUser", cascade = CascadeType.ALL)
-    private Set<BudgetReport> budgetReports;
+    @OneToMany(mappedBy = "relatedUser", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<BudgetReport> budgetReports;
 
 }

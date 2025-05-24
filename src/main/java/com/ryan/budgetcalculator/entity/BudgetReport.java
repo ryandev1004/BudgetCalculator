@@ -13,7 +13,7 @@ public class BudgetReport {
 
     @Id
     @UuidGenerator
-    private UUID id;
+    private UUID reportId;
 
     @Column(columnDefinition = "TEXT")
     private String reportDetails;
@@ -25,7 +25,7 @@ public class BudgetReport {
     private double postYearlyIncome;
 
     @ManyToOne
-    @JoinColumn(name = "budget_user_id")
-    private BudgetUser budgetUser;
+    @JoinColumn(name = "user_id", nullable = false)
+    private BudgetUser relatedUser;
 
 }
