@@ -20,5 +20,5 @@ public class BudgetUserDTO {
     private double monthlyInsurance;
     private double monthlyOtherExpenses;
     private List<BudgetReportDTO> budgetReports;
-    private SavingsGoal savingsGoal;
+    private SavingsGoalDTO savingsGoal;
 }

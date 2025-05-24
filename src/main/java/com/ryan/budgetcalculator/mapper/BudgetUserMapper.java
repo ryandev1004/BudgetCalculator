@@ -8,6 +8,7 @@ import org.mapstruct.*;
 
 @Mapper(componentModel = "spring", uses = {
     BudgetReportMapper.class,
+    SavingsGoalMapper.class
 })
 public interface BudgetUserMapper {
 

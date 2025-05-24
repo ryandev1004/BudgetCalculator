@@ -2,6 +2,7 @@ package com.ryan.budgetcalculator.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import org.hibernate.annotations.UuidGenerator;
@@ -21,5 +22,8 @@ public class SavingsGoal {
     private double targetAmount;
 
     private double savedAmount;
+
+    @OneToOne
+    private BudgetUser budgetUser;
 
 }

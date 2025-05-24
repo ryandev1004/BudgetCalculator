@@ -37,7 +37,7 @@ public class BudgetUser {
     @OneToMany(mappedBy = "relatedUser", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<BudgetReport> budgetReports;
 
-    @OneToOne
+    @OneToOne(mappedBy = "budgetUser", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn
     private SavingsGoal savingsGoal;
 
