@@ -43,6 +43,9 @@ public class BudgetUserService {
         return budgetUserMapper.toDTO(budgetUserRepository.save(budgetUser));
     }
 
+    public BudgetUser findEntityByID(UUID id) {
+        return budgetUserRepository.findById(id).orElse(null);
+    }
 
     public void deleteBudgetUser(UUID budgetUserId) { budgetUserRepository.deleteById(budgetUserId); }
 }
