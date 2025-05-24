@@ -5,7 +5,6 @@ import lombok.Data;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @Entity

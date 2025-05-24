@@ -3,20 +3,14 @@ package com.ryan.budgetcalculator.entity.dto;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.UUID;
+
 
 @Data
-public class BudgetReportDTO {
-
-
-    private UUID reportId;
+public class BudgetReportCreateDTO {
 
     private String reportDetails;
-
-    private LocalDate reportDate;
-
+    private LocalDate reportDate = LocalDate.now();
     private double postMonthlyIncome;
-
     private double postYearlyIncome;
 
 }
