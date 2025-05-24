@@ -1,6 +1,7 @@
 package com.ryan.budgetcalculator.entity.dto;
 
 import com.ryan.budgetcalculator.entity.BudgetReport;
+import com.ryan.budgetcalculator.entity.SavingsGoal;
 import lombok.Data;
 
 import java.util.List;
@@ -19,4 +20,5 @@ public class BudgetUserDTO {
     private double monthlyInsurance;
     private double monthlyOtherExpenses;
     private List<BudgetReportDTO> budgetReports;
+    private SavingsGoal savingsGoal;
 }

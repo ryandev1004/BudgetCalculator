@@ -38,4 +38,8 @@ public class BudgetUser {
     @OneToMany(mappedBy = "relatedUser", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<BudgetReport> budgetReports;
 
+    @OneToOne
+    @JoinColumn
+    private SavingsGoal savingsGoal;
+
 }
