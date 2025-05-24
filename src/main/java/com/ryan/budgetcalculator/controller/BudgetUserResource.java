@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-public class BudgetUserController {
+public class BudgetUserResource {
 
     private final BudgetUserService budgetUserService;
 
