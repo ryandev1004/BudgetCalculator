@@ -11,7 +11,10 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -29,5 +32,26 @@ public class BudgetReportService {
         BudgetReport budgetReport = budgetReportMapper.fromCreateDTO(budgetReportCreateDTO); // converts our given DTO into an entity
         budgetReport.setRelatedUser(budgetUser); // sets the entity's related user to the given user'
         return budgetReportMapper.toDTO(budgetReportRepository.save(budgetReport)); // saves the entity and returns the DTO
+    }
+
+    public List<BudgetReportDTO> getBudgetReports(UUID userID) {
+        BudgetUser budgetUser = budgetUserService.findEntityByID(userID);
+        if(budgetUser == null) {
+            throw new IllegalArgumentException("User not found");
+        }
+        List<BudgetReport> budgetReports = budgetReportRepository.findAllByRelatedUser(budgetUser);
+        return budgetReports.stream().map(budgetReportMapper::toDTO).collect(Collectors.toList());
+    }
+
+    public BudgetReportDTO getBudgetReport(UUID reportID, UUID userID) {
+        BudgetUser budgetUser = budgetUserService.findEntityByID(userID);
+        if(budgetUser == null) {
+            throw new IllegalArgumentException("User not found");
+        }
+        Optional<BudgetReport> budgetReport = budgetReportRepository.findByReportIdAndRelatedUser(reportID, budgetUser);
+        if(budgetReport.isEmpty()) {
+            throw new IllegalArgumentException("Report not found");
+        }
+        return budgetReportMapper.toDTO(budgetReport.get());
     }
 }

@@ -29,7 +29,7 @@ public class BudgetReport {
     @JoinColumn(name = "user_id", nullable = false)
     private BudgetUser relatedUser;
 
-    @PostPersist
+    @PrePersist
     private void postPersist() {
         reportDate = LocalDate.now();
     }

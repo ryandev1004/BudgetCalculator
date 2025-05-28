@@ -7,10 +7,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequiredArgsConstructor // Without this we wouldn't be able to initialize the service object
+@RequiredArgsConstructor
 public class BudgetReportResource {
 
     private final BudgetReportService budgetReportService;
@@ -18,5 +19,15 @@ public class BudgetReportResource {
     @PostMapping("reports/{userID}")
     public ResponseEntity<BudgetReportDTO> createBudgetReport(@RequestBody BudgetReportCreateDTO budgetReportCreateDTO, @PathVariable UUID userID) {
         return ResponseEntity.ok().body(budgetReportService.createBudgetReport(budgetReportCreateDTO, userID));
+    }
+
+    @GetMapping("reports/{userID}")
+    public ResponseEntity<List<BudgetReportDTO>> getBudgetReports(@PathVariable UUID userID) {
+        return ResponseEntity.ok().body(budgetReportService.getBudgetReports(userID));
+    }
+
+    @GetMapping("reports/{userID}/report/{reportID}")
+    public ResponseEntity<BudgetReportDTO> getBudgetReport(@PathVariable UUID userID, @PathVariable UUID reportID) {
+        return ResponseEntity.ok().body(budgetReportService.getBudgetReport(reportID, userID));
     }
 }
