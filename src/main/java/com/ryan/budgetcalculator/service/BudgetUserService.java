@@ -40,7 +40,9 @@ public class BudgetUserService {
 
     public BudgetUserDTO updateBudgetUser(BudgetUserPatchDTO budgetUserPatchDTO, UUID id) {
         BudgetUser budgetUser = budgetUserRepository.findById(id).orElse(null);
-        assert budgetUser != null;
+        if(budgetUser == null) {
+            throw new IllegalArgumentException("User not found");
+        }
         budgetUserMapper.partialUpdate(budgetUser, budgetUserPatchDTO);
         return budgetUserMapper.toDTO(budgetUserRepository.save(budgetUser));
     }
