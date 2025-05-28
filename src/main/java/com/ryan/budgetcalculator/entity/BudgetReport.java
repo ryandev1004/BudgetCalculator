@@ -9,6 +9,7 @@ import java.util.UUID;
 
 @Entity
 @Data
+@Table(name = "budget_report")
 public class BudgetReport {
 
     @Id
