@@ -16,12 +16,15 @@ public class BudgetUser {
     @UuidGenerator
     private UUID id;
 
+    @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
     private int age;
 
     private String occupation;
 
+    @Column(nullable = false)
     private double yearlyIncome;
 
     private double monthlyRent;

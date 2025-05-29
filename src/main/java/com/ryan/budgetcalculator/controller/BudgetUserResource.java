@@ -4,6 +4,7 @@ import com.ryan.budgetcalculator.entity.dto.BudgetUserCreateDTO;
 import com.ryan.budgetcalculator.entity.dto.BudgetUserDTO;
 import com.ryan.budgetcalculator.entity.dto.BudgetUserPatchDTO;
 import com.ryan.budgetcalculator.service.BudgetUserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,7 @@ public class BudgetUserResource {
     }
 
     @PostMapping("users")
-    public ResponseEntity<BudgetUserDTO> addBudgetUser(@RequestBody BudgetUserCreateDTO budgetUserCreateDTO) {
+    public ResponseEntity<BudgetUserDTO> addBudgetUser(@Valid @RequestBody BudgetUserCreateDTO budgetUserCreateDTO) {
         return ResponseEntity.ok().body(budgetUserService.createBudgetUser(budgetUserCreateDTO));
     }
 
