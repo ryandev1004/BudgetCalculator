@@ -1,11 +1,9 @@
 package com.ryan.budgetcalculator.service;
+
 import com.ryan.budgetcalculator.entity.BudgetReport;
 import com.ryan.budgetcalculator.entity.BudgetUser;
-import com.ryan.budgetcalculator.entity.dto.BudgetReportCreateDTO;
 import com.ryan.budgetcalculator.entity.dto.BudgetReportDTO;
-import com.ryan.budgetcalculator.entity.dto.BudgetUserDTO;
 import com.ryan.budgetcalculator.mapper.BudgetReportMapper;
-import com.ryan.budgetcalculator.mapper.BudgetUserMapper;
 import com.ryan.budgetcalculator.repository.BudgetReportRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -21,22 +19,52 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class BudgetReportService {
 
-
     private final BudgetUserService budgetUserService;
     private final BudgetReportRepository budgetReportRepository;
     private final BudgetReportMapper budgetReportMapper;
 
+    public BudgetReportDTO createBudgetReport(UUID userID) {
+        BudgetUser budgetUser = budgetUserService.findEntityByID(userID);
+        if (budgetUser == null) {
+            throw new IllegalArgumentException("User not found");
+        }
+        BudgetReportDTO createDTO = getBudgetReportDTO(budgetUser);
+        BudgetReport budgetReport = budgetReportMapper.toEntity(createDTO);
+        budgetReport.setRelatedUser(budgetUser);
+        return budgetReportMapper.toDTO(budgetReportRepository.save(budgetReport));
+    }
 
-    public BudgetReportDTO createBudgetReport(BudgetReportCreateDTO budgetReportCreateDTO, UUID userID) {
-        BudgetUser budgetUser = budgetUserService.findEntityByID(userID); // finds the Entity by given ID number
-        BudgetReport budgetReport = budgetReportMapper.fromCreateDTO(budgetReportCreateDTO); // converts our given DTO into an entity
-        budgetReport.setRelatedUser(budgetUser); // sets the entity's related user to the given user'
-        return budgetReportMapper.toDTO(budgetReportRepository.save(budgetReport)); // saves the entity and returns the DTO
+    private static BudgetReportDTO getBudgetReportDTO(BudgetUser budgetUser) {
+        double postMonthlyIncome =
+                Math.round(((budgetUser.getYearlyIncome() / 12) - (budgetUser.getTotalMonthlyExpenses())) * 100.0)
+                        / 100.0;
+        double postYearlyIncome = Math.round((postMonthlyIncome * 12) * 100.0) / 100.0;
+        String budgetReportDetails = getReportDetails(postMonthlyIncome);
+        BudgetReportDTO createDTO = new BudgetReportDTO();
+        createDTO.setPostMonthlyIncome(postMonthlyIncome);
+        createDTO.setPostYearlyIncome(postYearlyIncome);
+        createDTO.setReportDetails(budgetReportDetails);
+        return createDTO;
+    }
+
+    private static String getReportDetails(double postMonthlyIncome) {
+        String budgetReportDetails;
+        if (postMonthlyIncome < 200) {
+            budgetReportDetails = "You are spending too much for your yearly income: $" + postMonthlyIncome
+                    + " this is your post monthly income.";
+        } else if (postMonthlyIncome > 200 && postMonthlyIncome < 400) {
+            budgetReportDetails = "Your current budget is sufficient but does not leave much for savings: $"
+                    + postMonthlyIncome + " this is your post monthly income.";
+        } else {
+            budgetReportDetails = "Your current budget is excellent and leaves room for savings: $" + postMonthlyIncome
+                    + " this is your post monthly income.";
+        }
+        return budgetReportDetails;
     }
 
     public List<BudgetReportDTO> getBudgetReports(UUID userID) {
         BudgetUser budgetUser = budgetUserService.findEntityByID(userID);
-        if(budgetUser == null) {
+        if (budgetUser == null) {
             throw new IllegalArgumentException("User not found");
         }
         List<BudgetReport> budgetReports = budgetReportRepository.findAllByRelatedUser(budgetUser);
@@ -45,11 +73,11 @@ public class BudgetReportService {
 
     public BudgetReportDTO getBudgetReport(UUID reportID, UUID userID) {
         BudgetUser budgetUser = budgetUserService.findEntityByID(userID);
-        if(budgetUser == null) {
+        if (budgetUser == null) {
             throw new IllegalArgumentException("User not found");
         }
         Optional<BudgetReport> budgetReport = budgetReportRepository.findByReportIdAndRelatedUser(reportID, budgetUser);
-        if(budgetReport.isEmpty()) {
+        if (budgetReport.isEmpty()) {
             throw new IllegalArgumentException("Report not found");
         }
         return budgetReportMapper.toDTO(budgetReport.get());

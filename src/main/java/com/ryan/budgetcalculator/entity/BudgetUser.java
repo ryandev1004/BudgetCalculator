@@ -44,4 +44,7 @@ public class BudgetUser {
     @JoinColumn
     private SavingsGoal savingsGoal;
 
+    public double getTotalMonthlyExpenses() {
+        return monthlyRent + monthlyFoodCost + monthlyStreamingAndWifi + monthlyInsurance + monthlyOtherExpenses;
+    }
 }
