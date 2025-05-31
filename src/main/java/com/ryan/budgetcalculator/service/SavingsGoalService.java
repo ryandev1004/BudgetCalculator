@@ -55,7 +55,7 @@ public class SavingsGoalService {
         return savingsGoalMapper.toDTO(savingsGoal);
     }
 
-    public void deleteSavingsGoal(UUID userID) {
+    public UUID deleteSavingsGoal(UUID userID) {
         BudgetUser budgetUser = budgetUserService.findEntityByID(userID);
         if (budgetUser == null) {
             throw new IllegalArgumentException("User not found");
@@ -63,8 +63,11 @@ public class SavingsGoalService {
         SavingsGoal savingsGoal =
                 savingsGoalRepository.findByBudgetUser(budgetUser).orElse(null);
         if (savingsGoal == null) {
-            return;
+            return null;
         }
         savingsGoalRepository.deleteById(savingsGoal.getId());
+        budgetUser.setSavingsGoal(null);
+        budgetUserService.save(budgetUser);
+        return savingsGoal.getId();
     }
 }

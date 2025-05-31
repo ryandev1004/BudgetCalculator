@@ -20,5 +20,6 @@ public class SavingsGoal {
     private double savedAmount;
 
     @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "budget_user_id", nullable = false)
     private BudgetUser budgetUser;
 }

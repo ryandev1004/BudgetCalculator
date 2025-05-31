@@ -41,7 +41,7 @@ public class SavingsGoalResource {
     @DeleteMapping("goals/{userID}")
     public ResponseEntity<UUID> deleteSavingsGoal(@PathVariable UUID userID) {
         log.info("Deleting a savings goal for user: {}", userID);
-        savingsGoalService.deleteSavingsGoal(userID);
-        return ResponseEntity.ok().body(userID);
+        var savingsGoalId = savingsGoalService.deleteSavingsGoal(userID);
+        return ResponseEntity.ok().body(savingsGoalId);
     }
 }

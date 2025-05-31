@@ -24,9 +24,7 @@ public class BudgetUserService {
 
     public List<BudgetUserDTO> getAllBudgetUsers() {
         List<BudgetUser> allUsers = budgetUserRepository.findAll();
-        return allUsers.stream()
-                .map(budgetUserMapper::toDTO)
-                .collect(Collectors.toList());
+        return allUsers.stream().map(budgetUserMapper::toDTO).collect(Collectors.toList());
     }
 
     public BudgetUserDTO getBudgetUserById(UUID id) {
@@ -40,7 +38,7 @@ public class BudgetUserService {
 
     public BudgetUserDTO updateBudgetUser(BudgetUserPatchDTO budgetUserPatchDTO, UUID id) {
         BudgetUser budgetUser = budgetUserRepository.findById(id).orElse(null);
-        if(budgetUser == null) {
+        if (budgetUser == null) {
             throw new IllegalArgumentException("User not found");
         }
         budgetUserMapper.partialUpdate(budgetUser, budgetUserPatchDTO);
@@ -51,5 +49,11 @@ public class BudgetUserService {
         return budgetUserRepository.findById(id).orElse(null);
     }
 
-    public void deleteBudgetUser(UUID budgetUserId) { budgetUserRepository.deleteById(budgetUserId); }
+    public void deleteBudgetUser(UUID budgetUserId) {
+        budgetUserRepository.deleteById(budgetUserId);
+    }
+
+    public void save(BudgetUser budgetUser) {
+        budgetUserRepository.save(budgetUser);
+    }
 }

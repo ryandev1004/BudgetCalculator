@@ -41,7 +41,6 @@ public class BudgetUser {
     private List<BudgetReport> budgetReports;
 
     @OneToOne(mappedBy = "budgetUser", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JoinColumn
     private SavingsGoal savingsGoal;
 
     public double getTotalMonthlyExpenses() {
