@@ -1,14 +1,10 @@
 package com.ryan.budgetcalculator.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;
-
 
 @Entity
 @Data
@@ -23,7 +19,6 @@ public class SavingsGoal {
 
     private double savedAmount;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private BudgetUser budgetUser;
-
 }
